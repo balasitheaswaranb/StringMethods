@@ -1,0 +1,338 @@
+package zohotasks;
+
+class Task2 {
+	
+	public static int length(String str) {
+		    str = str + '\0';
+		    int count = 0;
+
+		    for (int i = 0; str.charAt(i) != '\0'; i++) {
+		        count++;
+		    }
+
+		    return count;
+		    }
+	
+	public static char[] toCharArray(String str) {
+		
+		   char[] array = new char[length(str)];
+		   for (int i = 0; i < length(str); i++) {
+		      array[i] = str.charAt(i);
+		   }
+
+		   return array;
+		}
+	
+	 public static char charAt(String str,int index) {
+         char result=' ';
+    	 char[] chr=toCharArray(str);
+    	 for(int i=0;i<length(str);i++) {
+    		 if(i==index) {
+    			result= chr[i];
+    		 }
+    	 }
+    	 return result;
+    	 
+     }
+	 
+	
+	public static String toLowercase(String str) {
+
+		char[] arr = toCharArray(str);
+		for (int i = 0; i < length(str); i++) {
+			if (arr[i] >= 65 && arr[i] <= 90) {
+				arr[i] = (char) (arr[i] + 32);
+			}
+		}
+		String str1 = new String(arr);
+		return str1;
+	}
+
+	public static String toUppercase(String str) {
+
+		char[] arr = toCharArray(str);
+		for (int i = 0; i < str.length(); i++) {
+			if (arr[i] >= 97 && arr[i] <= 122) {
+				arr[i] = (char) (arr[i] - 32);
+			}
+		} 
+		String str2 = new String(arr);
+		return str2;
+	}
+	
+	public static boolean contains(String str, String Substr) {
+	   
+	    char fullstring[]=toCharArray(str);
+	    char sub[]=toCharArray(Substr);
+	    int counter=0;
+	    if(sub.length==0) {
+	        return false;
+	    }
+
+	    for(int i=0;i<fullstring.length;i++) {
+
+	        if(fullstring[i]==sub[counter]) {
+	            counter++;
+	        } else {
+	            counter=0;
+	        }
+	      if(counter==sub.length) {
+	            return true;
+	       }
+
+	    }
+	    return false;
+
+	}
+	
+	 public static boolean equals(String str1, String str2){
+		 if(str1==null || str2==null){
+		 return false;
+		 }
+		 if(length(str1)!=length(str2))
+		 return false;
+
+		 for (int i = 0; i <length(str1) ; i++) {
+		 if(str1.charAt(i)!=str2.charAt(i))
+		 return false;
+		 }
+		
+		 return true;
+		 }
+	 
+	 public static boolean endsWith(String str, String suffix) {
+		    int strLen = length(str);
+		    int suffixLen = length(suffix);
+		    if(suffixLen>strLen) {
+		    	return false;
+		    	
+		    }
+		    for (int i = 0; i < suffixLen; i++) {
+		        char strChar = str.charAt(strLen - 1 -i);
+		        char suffixChar = suffix.charAt(suffixLen - 1 - i);
+		        if (strChar != suffixChar)
+		            return false;
+		    }
+		    return true;
+		}
+	 
+	 public static boolean startsWith(String str,String preffix) {
+		 char[]strchr=toCharArray(str);
+		 char[]preffixchr=toCharArray(preffix);
+		 if(preffix.length()>str.length()) {
+		    	return false;
+		    	
+		    }
+		 for(int i=0;i<preffixchr.length;i++) {
+			 if(preffixchr[i]!=strchr[i]) {
+				 return false;
+			 }
+		 }
+		 return true;
+		 
+	 }
+	 
+	 public static String concat(String str1, String str2){
+	       
+		        String str3="";
+		        for(int i=0;i<length(str1);i++){
+		            str3+=str1.charAt(i);
+		        }
+		        for(int j=0;j<length(str2);j++){
+		            str3+=str2.charAt(j);
+		        }
+
+		        return str3;
+		    }
+	 
+	 
+	 public static String trim(String str) {
+		  int forward=0,backward=0;
+		 
+		  char[] chr=toCharArray(str);
+		  for(int i=0;i<length(str);i++) {
+			  if(chr[i] != ' ') {
+				  forward=i;
+				  break;
+			  }
+		  }
+		  for(int i=length(str)-1;i>=0;i--) {
+			  if(chr[i] !=' ') {
+		       backward=i;
+		        break;
+		    }
+		  }
+		    int len =(backward-forward)+1;
+		    char[] chr1=new char[len];
+		    int i=0;
+		    while(i<len) {
+			  chr1[i++]=chr[forward];
+			  forward++;
+		  }
+		  String str1=new String(chr1);
+		  return str1;
+	 }
+	 
+
+	 public static boolean isEmpty(String str) {
+		    if (length(str) == 0 ) {
+		        return true;
+		    }
+		    return false;
+		}
+
+	 public static String subString(String str,int startFrom,int endBefore) {
+     String newStr = "";
+     for (int i = startFrom; i < endBefore; i++) {
+         newStr += (str.charAt(i));
+     }
+     return newStr ;
+	}
+
+	 public static int codePointBefore(String str,int index) {
+		 index=index-1;
+		 int count=0;
+		 char[]chr= toCharArray(str);
+		 for(int i=0;i<length(str);i++)
+		 {
+			 if(i==index) {
+				 int ascii=chr[i];
+				  count=ascii;
+			 }
+		 }
+		 return count;
+		 
+	 }
+
+     public static int codePointAt(String str,int index) {
+    	 int count=0;
+    	 char[] chr= toCharArray(str);
+    	 for(int i=0;i<length(str);i++) {
+    		 if(i==index) {
+    			 int ascii= chr[i];
+    			 count=ascii;
+    		 }
+    		 }
+    	 return count;
+     }
+
+     public static int codePointCount(String str,int index1,int index2) {
+    	 int count=0;
+    	 if(index2 > length(str)) {
+    		 return '\0';
+    	 }
+    	 for(int i=index1;i<index2;i++) {
+    		 count++;
+    	 }
+    	 return count;
+     }
+     
+     public static boolean  contentEquals(String str1,String str2) {
+    	 char[] chrstr1=str1.toCharArray();
+    	 char[] chrstr2=str2.toCharArray();
+    	       for (int i = 0; i < str2.length(); i++){
+    	    
+    	              if (chrstr2[i] != chrstr1[i]) {
+    	              return false;
+    	              }
+    	           
+    	       }
+    	  
+    	        return true;
+    	   }
+     
+    public static int compareTo(String str1,String str2) {  
+    	    int length1 =length(str1);  
+    	    int length2 = length(str2);  
+    	    int limit = Math.min(length1, length2);  
+    	    char v1[] = toCharArray(str1);  
+    	    char v2[] =toCharArray(str2);  
+    	   
+    	    int i = 0;  
+    	    while (i < limit) {  
+    	        char ch1 = v1[i];  
+    	        char ch2 = v2[i];  
+    	        if (ch1 != ch2) {  
+    	            return ch1 - ch2;  
+    	        }  
+    	        i++;  
+    	    }  
+    	    return length1 - length2;  
+    	}  
+    
+    public static String replace(String str,char oldchr,char replace) {
+		String str1="";
+		for(int i=0;i<length(str);i++)
+		{
+			if(str.charAt(i)==oldchr) {
+				str1+=replace;
+			}else{
+				str1+=str.charAt(i);
+		}
+		}
+		return str1;
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+public class TaskInput {
+	public static void main(String args[]) {
+		 
+		 
+		 
+		// Task2 output = new Task2();
+                       System.out.println("1, The length of String                : "+Task2.length("balasitheas ")); 
+		
+                        
+                       System.out.print("2, convert string into charArray       : "); 
+	    System.out.println(Task2.toCharArray("Sitheas"));
+	    
+	   System.out.println("3, character of Specified string index : "+Task2.charAt("sitheas",1));
+		 
+	    System.out.println("4, Uppercase of given string           : "+Task2.toUppercase("sitheas"));
+	    
+	    System.out.println("5, Lowercase of given string           : "+Task2.toLowercase("sITHEAS"));
+	    
+	    System.out.println("6, contains in same string of          : "+Task2.contains("sandy","z"));
+	    
+	    System.out.println("7, checks Equals  of the string        : "+Task2.equals("sitheas","sandy"));
+	    
+	    System.out.println("8, check the String endsWith           : "+Task2.endsWith("zoho incubation","incubation"));
+	    
+	    System.out.println("9, check the string startswith         : "+Task2.startsWith("zoho incubation trainee","zoho"));
+	    
+	    System.out.println("10, concating two  strings             : "+Task2.concat("sitheas","waran"));
+	    
+	    System.out.println("11, trimming empty space               : "+Task2.trim(" sitheas waran "));
+	    
+	    System.out.println("13, check  string is empty or not      : "+Task2.isEmpty(" "));
+	    
+	    System.out.println("14, print the subsring                 : "+Task2.subString("sitheaswaran",2,4));
+	     
+	    System.out.println("15, Unicode character of before index  : "+Task2.codePointBefore("sitheas",1));
+	    
+	    System.out.println("16,Unicode character of specified index : "+Task2.codePointAt("sitheas",1));
+	    
+	    System.out.println("17,Unicode values found in string       : "+Task2.codePointCount("sitheas",1,5));
+	    
+	    System.out.println("18,content equals of string             : "+Task2.contentEquals("sitheas","sitheakkk"));
+	    
+	    System.out.println("19,content equals of string             : "+Task2.compareTo("sitheas","zitheaf"));
+	    
+	    System.out.println("20, Replace the Specified string       : "+Task2.replace("sitheas",'i','s'));
+}
+
+}
+	
