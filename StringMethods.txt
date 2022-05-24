@@ -6,7 +6,7 @@ class Task2 {
 		    str = str + '\0';
 		    int count = 0;
 
-		    for (int i = 0; str.charAt(i) != '\0'; i++) {
+		    for (int i = 0; charAt(str,i) != '\0'; i++) {
 		        count++;
 		    }
 
@@ -17,7 +17,7 @@ class Task2 {
 		
 		   char[] array = new char[length(str)];
 		   for (int i = 0; i < length(str); i++) {
-		      array[i] = str.charAt(i);
+		      array[i] = charAt(str,i);
 		   }
 
 		   return array;
@@ -93,7 +93,7 @@ class Task2 {
 		 return false;
 
 		 for (int i = 0; i <length(str1) ; i++) {
-		 if(str1.charAt(i)!=str2.charAt(i))
+		 if(charAt(str1,i)!=charAt(str2,i))
 		 return false;
 		 }
 		
@@ -108,8 +108,8 @@ class Task2 {
 		    	
 		    }
 		    for (int i = 0; i < suffixLen; i++) {
-		        char strChar = str.charAt(strLen - 1 -i);
-		        char suffixChar = suffix.charAt(suffixLen - 1 - i);
+		        char strChar = charAt(str,strLen - 1 -i);
+		        char suffixChar = charAt(suffix,suffixLen - 1 - i);
 		        if (strChar != suffixChar)
 		            return false;
 		    }
@@ -136,10 +136,10 @@ class Task2 {
 	       
 		        String str3="";
 		        for(int i=0;i<length(str1);i++){
-		            str3+=str1.charAt(i);
+		            str3+=charAt(str1,i);
 		        }
 		        for(int j=0;j<length(str2);j++){
-		            str3+=str2.charAt(j);
+		            str3+=charAt(str2,j);
 		        }
 
 		        return str3;
@@ -264,10 +264,10 @@ class Task2 {
 		String str1="";
 		for(int i=0;i<length(str);i++)
 		{
-			if(str.charAt(i)==oldchr) {
+			if(charAt(str,i)==oldchr) {
 				str1+=replace;
 			}else{
-				str1+=str.charAt(i);
+				str1+=charAt(str,i);
 		}
 		}
 		return str1;
