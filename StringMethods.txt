@@ -75,6 +75,8 @@ class Task2 {
 	            counter++;
 	        } else {
 	            counter=0;
+		    if(fullstring[i]==sub[counter]) {
+	            counter++;
 	        }
 	      if(counter==sub.length) {
 	            return true;
